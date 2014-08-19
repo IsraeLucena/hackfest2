@@ -1,0 +1,9 @@
+@main("HackFests") { 
+	@if(!UsuarioController.logado()){
+		@participacao.modalInformacoes()
+		@participacao.modalInformacoes()
+		@home.logado.index() 
+	}else{ 
+		@home.naoLogado.index() 
+	} 
+}

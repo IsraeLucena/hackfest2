@@ -1,0 +1,809 @@
+diff --git a/.target/.gitignore b/.target/.gitignore
+index 737f797..1077d71 100644
+--- a/.target/.gitignore
++++ b/.target/.gitignore
+@@ -1,8 +1,5 @@
+ /SistemaTest.class
+ /controllers/
++/hackfests/
+ /models/
+ /views/
+-/ApplicationTest.class
+-/IntegrationTest$1.class
+-/IntegrationTest.class
+-/hackfests/
+diff --git a/.target/ApplicationTest.class b/.target/ApplicationTest.class
+deleted file mode 100644
+index ec67080..0000000
+Binary files a/.target/ApplicationTest.class and /dev/null differ
+diff --git a/.target/Global$1.class b/.target/Global$1.class
+deleted file mode 100644
+index 748a7cd..0000000
+Binary files a/.target/Global$1.class and /dev/null differ
+diff --git a/.target/Global.class b/.target/Global.class
+deleted file mode 100644
+index 820ea2e..0000000
+Binary files a/.target/Global.class and /dev/null differ
+diff --git a/.target/IntegrationTest$1.class b/.target/IntegrationTest$1.class
+deleted file mode 100644
+index 259362f..0000000
+Binary files a/.target/IntegrationTest$1.class and /dev/null differ
+diff --git a/.target/IntegrationTest.class b/.target/IntegrationTest.class
+deleted file mode 100644
+index 50d6e65..0000000
+Binary files a/.target/IntegrationTest.class and /dev/null differ
+diff --git a/.target/SistemaTest.class b/.target/SistemaTest.class
+index f3bce5e..3072473 100644
+Binary files a/.target/SistemaTest.class and b/.target/SistemaTest.class differ
+diff --git a/.target/models/Evento.class b/.target/models/Evento.class
+deleted file mode 100644
+index 1abb8f5..0000000
+Binary files a/.target/models/Evento.class and /dev/null differ
+diff --git a/.target/models/Pessoa.class b/.target/models/Pessoa.class
+deleted file mode 100644
+index 32099a2..0000000
+Binary files a/.target/models/Pessoa.class and /dev/null differ
+diff --git a/.target/models/Sistema.class b/.target/models/Sistema.class
+index ba8f2a9..88f5bab 100644
+Binary files a/.target/models/Sistema.class and b/.target/models/Sistema.class differ
+diff --git a/.target/models/dao/GenericDAO.class b/.target/models/dao/GenericDAO.class
+index cae3ac6..7421df0 100644
+Binary files a/.target/models/dao/GenericDAO.class and b/.target/models/dao/GenericDAO.class differ
+diff --git a/.target/models/dao/GenericDAOImpl.class b/.target/models/dao/GenericDAOImpl.class
+index 3bbdb60..2871e0c 100644
+Binary files a/.target/models/dao/GenericDAOImpl.class and b/.target/models/dao/GenericDAOImpl.class differ
+diff --git a/.target/views/cadastro.scala.html b/.target/views/cadastro.scala.html
+deleted file mode 100644
+index 2ca3aa2..0000000
+--- a/.target/views/cadastro.scala.html
++++ /dev/null
+@@ -1,51 +0,0 @@
+-@(sistema: Sistema)
+-<!DOCTYPE html>
+-<html>
+-	<head>
+-		<title>Sistema de Hackfests</title>
+-		<link href="@routes.Assets.at("css/bootstrap.min.css")" rel="stylesheet" media="screen">
+-		<link rel="stylesheet" media="screen"
+-		href="@routes.Assets.at("stylesheets/main.css")">
+-		<link rel="shortcut icon" type="image/png"
+-		href="@routes.Assets.at("images/favicon.png")">
+-		<script
+-		src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")"
+-		type="text/javascript">
+-		</script>
+-		
+-	</head>
+-	<body>	
+-		<center><img class="centralizar" src="@routes.Assets.at("images/logo.png")" /> </center>
+-        <ul class="nav nav-pills">
+-          <li><a href="/""> In&iacute;cio</a></li>
+-          <li class="active"><a href="/cadastrarHackfest">Cadastrar um novo Hackfest</a></li>
+-          
+-        </ul>	
+-        <div class="container form-horizontal panel panel-primary text-info" >
+-        
+-       
+-		<center><h2><b>Sistema de Hackfests - Cadastrar um novo Hackfest </b></h2></center>
+-		
+-		
+-		<form action="@routes.Application.newEvento()" method="post">
+-		
+-			<h3>Adicionar novo Hackfest:</h3>
+-			
+-			<input class="input-xxlarge" type="text" size="80" maxlength="30" placeholder="T&iacute;tulo do hackfest" name="nome"><br><br>
+-            <input class="input-xxlarge" type="text" size="176" maxlength="80" placeholder="Descreva o seu hackfest" name="descricao"><br><br>
+-            <input class="input-xxlarge" type="text" size="40" maxlength="20" placeholder="Data do seu hackfest: dd/mm/aaaa" name="data"> <br>
+-            <h4> <b>Apague</b> o(s) tema(s) na qual o seu evento n&atilde;o est&aacute; relacionado:</h4>
+-            <input class="input-xlarge" size="30" id="focusedInput" type="text" value="Engenharia de Software" name=tema1>
+-            <input class="input-xlarge" size="30" id="focusedInput" type="text" value="Banco de Dados" name=tema2>
+-            <input class="input-xlarge" size="30" id="focusedInput" type="text" value="Sistema da Informa&ccedil;&atilde;o" name=tema3>
+-            <input class="input-xlarge" size="30" id="focusedInput" type="text" value="Computa&ccedil;&atilde;o Desplugada" name=tema4>
+-            <input class="input-xlarge" size="30" id="focusedInput" type="text" value="Desenvolvimento Web" name=tema5>
+-            
+-			<br>
+-			<br>
+-			<input class="input-xxlarge" type="text" size="30" maxlength="30" placeholder="Insira o seu nome" name="nomeAdmin">
+-			<input class="input-xxlarge" type="text" size="50" maxlength="30" placeholder="Insira o Seu email" name="EmailAdmin">
+-			<br><br><center><input type="submit" class="btn btn-primary" value="Cadastrar">  </center></div>
+-             </form>
+-             
+-     </body>
+\ No newline at end of file
+diff --git a/.target/views/eventos.scala.html b/.target/views/eventos.scala.html
+deleted file mode 100644
+index 60d652e..0000000
+--- a/.target/views/eventos.scala.html
++++ /dev/null
+@@ -1,34 +0,0 @@
+-@(sistema: Sistema, eventos: List[Evento])
+-
+-<h2>Eventos do tema1</h2>
+-<div class="table-responsive">
+-                <table class="table table-hover">
+-                    <thead>
+-                        <tr>
+-                            <th>Nome </th>
+-                            <th>Descricao </th>
+-                            <th>Data </th>
+-                             
+-                            <th>A&ccedil;&otilde;es </th>
+-                        </tr>
+-                    </thead>
+-                    <tbody>
+-                    @for(evento <- eventos) {
+-                    	
+-                        <tr>
+-                            <td>@evento.getNome()</td>
+-                            <td>@evento.getDescricao()</td>
+-                            <td>@evento.getData()</td>
+-                            
+-                            <td>
+-                                                    
+-                            <form action="MUDARAKI" method="post"> 
+-                                <input type="submit" class="btn btn-primary" value="Participar">
+-                            </form> 
+-                            </td>
+-                        </tr>
+-                        
+-                    }
+-                    </tbody>
+-                </table>
+-            </div>
+diff --git a/.target/views/sistema.scala.html b/.target/views/sistema.scala.html
+deleted file mode 100644
+index 0169b87..0000000
+--- a/.target/views/sistema.scala.html
++++ /dev/null
+@@ -1,43 +0,0 @@
+-@(sistema: Sistema)
+-
+-
+-<!DOCTYPE html>
+-<html>
+-	<head>
+-		<title>Sistema de Hackfests</title>
+-		<link href="@routes.Assets.at("css/bootstrap.min.css")" rel="stylesheet" media="screen">
+-		<link rel="stylesheet" media="screen"
+-		href="@routes.Assets.at("stylesheets/main.css")">
+-		<link rel="shortcut icon" type="image/png"
+-		href="@routes.Assets.at("images/favicon.png")">
+-		<script
+-		src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")"
+-		type="text/javascript">
+-		</script>
+-		
+-	</head>
+-	<body>	
+-	 	 <center><img class="centralizar" src="@routes.Assets.at("images/logo.png")" /> </center>
+-        <ul class="nav nav-pills">
+-          <li class="active"><a href="/""> In&iacute;cio</a></li>
+-          <li><a href="/cadastro">Cadastrar um novo Hackfest</a></li>
+-          
+-        </ul>	
+-        <div class="container form-horizontal panel panel-primary text-info" >
+-        
+-       
+-		<center><h2><b>Sistema de Hackfests</b></h2></center>
+-		<h4>Esse sistema lhe ajudar&aacute; a promover Hackfests de tecnologias e temas que sejam interessantes. 
+-		<br> <br>  Um hackfest (ou hackathon) &eacute; um evento de programadores interessados em um tema ou tecnologia, que se re&uacute;nem e constroem algo no tema durante um dia.       
+-        <br> <br> Participe! Essas s&atilde;o &oacute;timas oportunidades para aprender novas tecnologias e desenvolver o seu Network!    
+-        </h4>
+-        </div>
+-        
+-        <h2>@sistema.numDeEventos()</h2>
+-        <h2>@sistema.EventosPorTema("Engenharia de Software").size()</h2>
+-        
+-        @eventos(sistema, sistema.getEventos())
+-        
+-		
+-	</body>
+-</html>
+\ No newline at end of file
+diff --git a/app/models/evento/Evento.java b/app/models/evento/Evento.java
+index 660d994..f9d6a04 100644
+--- a/app/models/evento/Evento.java
++++ b/app/models/evento/Evento.java
+@@ -1,5 +1,7 @@
+ package models.evento;
+ 
++import java.util.ArrayList;
++import java.util.Comparator;
+ import java.util.Date;
+ import java.util.List;
+ 
+@@ -11,12 +13,17 @@ import javax.persistence.GeneratedValue;
+ import javax.persistence.GenerationType;
+ import javax.persistence.Id;
+ import javax.persistence.JoinColumn;
++import javax.persistence.ManyToOne;
+ import javax.persistence.OneToMany;
+ import javax.persistence.OneToOne;
+ import javax.persistence.SequenceGenerator;
+ import javax.persistence.Temporal;
+ import javax.persistence.TemporalType;
+ 
++import org.hibernate.annotations.Type;
++
++import play.db.jpa.Transactional;
++import models.exceptions.Strings;
+ import models.usuario.Usuario;
+ import controllers.Application;
+ 
+@@ -40,7 +47,7 @@ public class Evento {
+ 	
+ 	@OneToMany
+ 	@JoinColumn
+-	private List<Usuario> participantes;
++	private List<Usuario> participantes = new ArrayList<>();
+ 
+ 	@OneToOne(cascade = CascadeType.ALL)
+ 	@JoinColumn
+@@ -50,14 +57,38 @@ public class Evento {
+ 	@JoinColumn 
+ 	private List<Tema> temas;
+ 	
++	@ManyToOne(cascade = CascadeType.ALL)
++	@JoinColumn
++	private Local local;
++	
++	@Column(nullable = false)
++	@Type(type = "org.hibernate.type.NumericBooleanType")
++	private boolean eventoPrioritario;
++	
+ 	public Evento(){ }
+ 
+-	public Evento(Long idAdministrador, String titulo, String descricao, Date data, List<Tema> temas) throws Exception {
++	private Evento(Long idAdministrador, String titulo, String descricao,
++			Date data, List<Tema> temas, boolean eventoPrioritario) throws Exception{
+ 		setAdministrador(idAdministrador);
+ 		setTitulo(titulo);
+ 		setDescricao(descricao);
+ 		setData(data);
+ 		setTemas(temas);
++		setEventoPrioritario(eventoPrioritario);
++	}
++
++	public Evento(Long idAdministrador, String titulo, String descricao,
++			Date data, List<Tema> temas, int capacidade, String comoChegar, boolean eventoPrioritario)
++			throws Exception {
++		this(idAdministrador, titulo, descricao, data, temas, eventoPrioritario);
++		setLocal(capacidade, comoChegar);
++	}
++	
++	public Evento(Long idAdministrador, String titulo, String descricao,
++			Date data, List<Tema> temas, Long idLocal, boolean eventoPrioritario)
++			throws Exception {
++		this(idAdministrador, titulo, descricao, data, temas, eventoPrioritario);
++		setLocal(idLocal);
+ 	}
+ 
+ 	private void setAdministrador(Long idAdministrador) throws Exception {
+@@ -101,8 +132,31 @@ public class Evento {
+ 		return participantes;
+ 	}
+ 
+-	public void addParticipantes(List<Usuario> participantes) {
+-		this.participantes = participantes;
++	public void addParticipante(Usuario usuario) throws Exception {
++		if (getAdministrador().equals(this)) {
++			throw new Exception(Strings.EVENTO_EH_ADMINSTRADOR_EXCEPTION);
++		} else if (eventoCheio()) {
++			if (ehEventoPrioritatio()) {
++				Usuario usuarioMenosExperiente = usuarioMenosExperiente();
++				if (usuario.getEventosAdministrados().size() > usuarioMenosExperiente
++						.getEventosAdministrados().size()
++						&& usuario.getEventosQueVaiParticipar().size() > usuarioMenosExperiente
++								.getEventosQueVaiParticipar().size()) {
++					participantes.remove(usuarioMenosExperiente);
++				} else {
++					throw new Exception(
++							Strings.EVENTO_COM_CAPACIDADE_MAXIMA_EXCEPTION);
++				}
++			} else {
++				throw new Exception(
++						Strings.EVENTO_COM_CAPACIDADE_MAXIMA_EXCEPTION);
++			}
++		}
++		this.participantes.add(usuario);
++	}
++	
++	private boolean eventoCheio(){
++		return getParticipantes().size() == getLocal().getCapacidade();
+ 	}
+ 
+ 	public Usuario getAdministrador() {
+@@ -116,8 +170,49 @@ public class Evento {
+ 	private void setTemas(List<Tema> temas) {
+ 		this.temas = temas;
+ 	}
++
++	private void setLocal(int capacidade, String comoChegar) {
++		this.local = new Local(capacidade, comoChegar);
++	}
+ 	
++	private void setLocal(Long idLocal) {
++		local = Local.buscar(idLocal);
++	}
++	
++	public Local getLocal() {
++		return this.local;
++	}
++	
++	private void setEventoPrioritario(boolean eventoPrioritario) {
++		this.eventoPrioritario = eventoPrioritario;
++	}
++	
++	public boolean ehEventoPrioritatio() {
++		return this.eventoPrioritario;
++	}
++	
++	public Usuario usuarioMenosExperiente() {
++		participantes.sort(new Comparator<Usuario>() {
++			@Override
++			public int compare(Usuario usuario1, Usuario usuario2) {
++				return Integer.compare(usuario1.getEventosQueVaiParticipar()
++						.size(), usuario2.getEventosQueVaiParticipar().size());
++			}
++		});
++		return participantes.get(participantes.size() - 1);
++	}
++
+ 	public void salvar(){
+ 		Application.getDao().persist(this);
+ 	}
++	
++	@Transactional
++	public static Evento buscar(Long id) {
++		return Application.getDao().findByEntityId(Evento.class, id);
++	}
++	
++	@Transactional
++	public static List<Evento> todos() {
++		return Application.getDao().findAllByClassName("Evento");
++	}
+ }
+diff --git a/app/models/exceptions/Strings.java b/app/models/exceptions/Strings.java
+index 9e8834d..9c4c989 100644
+--- a/app/models/exceptions/Strings.java
++++ b/app/models/exceptions/Strings.java
+@@ -2,4 +2,7 @@ package models.exceptions;
+ 
+ public class Strings {
+ 	public static String TEMA_NULL_OU_VAZIO = "Tema null ou vazio";
++	public static String EVENTO_INEXISTENTE_EXCEPTION = "Evento não existe";
++	public static final String EVENTO_EH_ADMINSTRADOR_EXCEPTION = "Usuario é adminstrador do evento";
++	public static final String EVENTO_COM_CAPACIDADE_MAXIMA_EXCEPTION = "Evento está com capacidade máxima";
+ }
+diff --git a/app/models/usuario/Login.java b/app/models/usuario/Login.java
+index c104664..e5a419c 100644
+--- a/app/models/usuario/Login.java
++++ b/app/models/usuario/Login.java
+@@ -47,10 +47,10 @@ public class Login {
+ 	}
+ 
+ 	private void setSenha(String senha) {
+-		this.senha = getSenhaCriptografada(senha);
++		this.senha = criptografarSenha(senha);
+ 	}
+ 	
+-	private String getSenhaCriptografada(String senha){
++	private String criptografarSenha(String senha){
+ 		MessageDigest md = null;
+ 		try {
+ 			md = MessageDigest.getInstance("SHA");
+@@ -76,7 +76,7 @@ public class Login {
+ 	
+ 	public boolean senhaValida(String senha) {
+ 		if (senha != null && !senha.isEmpty()){
+-			return this.senha.equals(getSenhaCriptografada(senha));
++			return this.senha.equals(criptografarSenha(senha));
+ 		}
+ 		return false;
+ 	}
+diff --git a/app/models/usuario/Usuario.java b/app/models/usuario/Usuario.java
+index 47c7e9b..8eaef17 100644
+--- a/app/models/usuario/Usuario.java
++++ b/app/models/usuario/Usuario.java
+@@ -11,13 +11,13 @@ import javax.persistence.FetchType;
+ import javax.persistence.GeneratedValue;
+ import javax.persistence.GenerationType;
+ import javax.persistence.Id;
+-import javax.persistence.OneToMany;
+ import javax.persistence.OneToOne;
+ import javax.persistence.PrimaryKeyJoinColumn;
+ import javax.persistence.SequenceGenerator;
+ 
+ import models.evento.Evento;
+ import models.evento.Tema;
++import models.exceptions.Strings;
+ import play.db.jpa.Transactional;
+ import controllers.Application;
+ 
+@@ -36,13 +36,6 @@ public class Usuario {
+ 	@PrimaryKeyJoinColumn
+ 	private Login login;
+ 
+-	@OneToMany(cascade = CascadeType.ALL)
+-	private List<Evento> eventos = new ArrayList<Evento>();
+-	
+-	public List<Evento> getEventos() {
+-		return eventos;
+-	} 
+-
+ 	public Usuario() { }
+ 
+ 	public Usuario(String nome, String email, String senha) {
+@@ -96,7 +89,38 @@ public class Usuario {
+ 	}
+ 
+ 	public void novoEvento(String titulo, String descricao, Date data,
+-			List<Tema> temas) throws Exception {
+-		eventos.add(new Evento(this.id, titulo, descricao, data, temas));
++			List<Tema> temas, int capacidade, String comoChegar, boolean eventoPrioritario) throws Exception {
++		new Evento(this.id, titulo, descricao, data, temas, capacidade, comoChegar, eventoPrioritario).salvar();
++	}
++	
++	public void novoEvento(String titulo, String descricao, Date data,
++			List<Tema> temas, Long idLocal, boolean eventoPrioritario) throws Exception {
++		new Evento(this.id, titulo, descricao, data, temas, idLocal, eventoPrioritario).salvar();
++	}
++	
++	public void participar(Long eventoId) throws Exception {
++		Evento evento = Evento.buscar(eventoId);
++		if (evento == null) {
++			throw new Exception(Strings.EVENTO_INEXISTENTE_EXCEPTION);
++		}
++		evento.addParticipante(this);
++	}
++
++	public List<Evento> getEventosAdministrados() {
++		List<Evento> eventosAdministrados = new ArrayList<>();
++		for (Evento evento : Evento.todos()) {
++			if (evento.getAdministrador().equals(this))
++				eventosAdministrados.add(evento);
++		}
++		return eventosAdministrados;
++	}
++	
++	public List<Evento> getEventosQueVaiParticipar() {
++		List<Evento> eventosQueVaiParticipar = new ArrayList<>();
++		for (Evento evento : Evento.todos()) {
++			if (evento.getParticipantes().contains(this))
++				eventosQueVaiParticipar.add(evento);
++		}
++		return eventosQueVaiParticipar;
+ 	}
+ }
+diff --git a/test/hackfests/models/UsuarioTest.java b/test/hackfests/models/UsuarioTest.java
+index 371783f..268359d 100644
+--- a/test/hackfests/models/UsuarioTest.java
++++ b/test/hackfests/models/UsuarioTest.java
+@@ -6,15 +6,44 @@ import static org.junit.Assert.fail;
+ 
+ import java.util.Date;
+ 
++import models.evento.Local;
+ import models.evento.Tema;
++import models.exceptions.Strings;
+ import models.usuario.Usuario;
+ 
++import org.junit.Before;
+ import org.junit.Test;
+ 
+ import play.db.jpa.JPA;
+ 
+ public class UsuarioTest extends BaseModelTest {
+ 
++	private Local localPadrao;
++	private Usuario usuario1;
++	private Usuario usuario2;
++	private Usuario usuario3;
++
++	@Before
++	public void setup(){
++		JPA.withTransaction(new play.libs.F.Callback0() {
++			public void invoke() {
++				localPadrao = new Local(15, "Local 1");
++				localPadrao.salvar();
++				
++				usuario1 = new Usuario("jose", "jose@mail.com", "Senha#123");
++				usuario2 = new Usuario("maria", "maria@mail.com", "Senha#123");				
++				usuario3 = new Usuario("joana", "joana@mail.com", "Senha#123");
++
++				try {
++					new Tema("Tema 1").salvar();
++					new Tema("Tema 2").salvar();
++				} catch (Exception e) {
++					fail();
++				}
++			}
++		});
++	}
++	
+ 	@Test
+ 	public void deveCadastrarUmUsuarioSemRepeticao() {
+ 		JPA.withTransaction(new play.libs.F.Callback0() {
+@@ -69,33 +98,268 @@ public class UsuarioTest extends BaseModelTest {
+ 		JPA.withTransaction(new play.libs.F.Callback0() {
+ 			public void invoke() {
+ 				try {
+-					Usuario usuario = new Usuario("jose", "jose@mail.com", "Senha#123");
+-					usuario.salvar();
++					usuario1.salvar();
++
++					try {
++						usuario1.novoEvento(
++								"Evento 1",
++								"Descricao 1",
++								new Date(), Tema.todos(), localPadrao.getId(), false);
++					} catch(Exception e){
++						fail();
++					}
++
++					assertThat(Usuario.buscar(1L).getEventosAdministrados().size(), is(1));
++					
++					try {
++						usuario1.novoEvento(
++								"Evento 2",
++								"Descricao 2",
++								new Date(), Tema.todos(), localPadrao.getId(), false);
++					} catch(Exception e){
++						fail();
++					}
++					
++					assertThat(Usuario.buscar(1L).getEventosAdministrados().size(), is(2));
++				} catch (Exception e) {
++					fail();
++				}
++			}
++		});
++	}
++	
++	@Test
++	public void deveCriarEventoComLocalJaCadastradoOuNao() {
++		JPA.withTransaction(new play.libs.F.Callback0() {
++			public void invoke() {
++				try {
++					usuario1.salvar();
++
++					try {
++						usuario1.novoEvento(
++								"Evento 1",
++								"Descricao 1",
++								new Date(), Tema.todos(), 20, "No LCC2", false);
++					} catch(Exception e){
++						fail();
++					}
++
++					assertThat(Usuario.buscar(1L).getEventosAdministrados().size(), is(1));
++					
++					try {
++						usuario1.novoEvento(
++								"Evento 2",
++								"Descricao 2",
++								new Date(), Tema.todos(), 1L, false);
++					} catch(Exception e){
++						fail();
++					}
++					
++					assertThat(Usuario.buscar(1L).getEventosAdministrados().size(), is(2));
++				} catch (Exception e) {
++					fail();
++				}
++			}
++		});
++	}
++	
++	@Test
++	public void naoDeveParticiparDeEventosComCapacidadeTotal() {
++		JPA.withTransaction(new play.libs.F.Callback0() {
++			public void invoke() {
++				try {
++					usuario1.salvar();
++
++					try {
++						usuario1.novoEvento(
++								"Evento 1",
++								"Descricao 1",
++								new Date(), Tema.todos(), 1, "No LCC2", false);
++					} catch(Exception e){
++						fail();
++					}
++
++					usuario2.salvar();
++					usuario3.salvar();
++					
++					try {
++						usuario2.participar(1L);
++					} catch(Exception e){
++						fail();
++					}
++					
++					try {
++						usuario3.participar(1L);
++						fail();
++					} catch(Exception e){
++						assertThat(e.getMessage(), is(Strings.EVENTO_COM_CAPACIDADE_MAXIMA_EXCEPTION));
++					}
++					
++				} catch (Exception e) {
++					fail();
++				}
++			}
++		});
++	}
++	
++	@Test
++	public void devePriorizarParticipantesExperientes() {
++		JPA.withTransaction(new play.libs.F.Callback0() {
++			public void invoke() {
++				try {
++					usuario1.salvar();
+ 
+-					new Tema("Engenharia de Software I").salvar();
+-					new Tema("Web").salvar();
++					try {
++						usuario1.novoEvento(
++								"Evento 1",
++								"Descricao 1",
++								new Date(), Tema.todos(), 1, "No LCC2", true);
++					} catch(Exception e){
++						fail();
++					}
+ 
++					usuario2.salvar();
++					usuario2.participar(1L);
++
++					assertThat(usuario2.getEventosQueVaiParticipar().size(), is(1));
++
++					usuario3.salvar();
++					
+ 					try {
+-						usuario.novoEvento(
+-								"Navegando na Web",
+-								"Palestra sobre boas práticas que devem ser adotadas na Web",
+-								new Date(), Tema.todos());
++						usuario3.participar(1L);
++						fail();
+ 					} catch(Exception e){
++						assertThat(e.getMessage(), is(Strings.EVENTO_COM_CAPACIDADE_MAXIMA_EXCEPTION));
++					}
++
++					assertThat(usuario2.getEventosAdministrados().size(), is(0));
++					assertThat(usuario2.getEventosQueVaiParticipar().size(), is(1));
++					
++					assertThat(usuario3.getEventosAdministrados().size(), is(0));
++					assertThat(usuario3.getEventosQueVaiParticipar().size(), is(0));
++
++					usuario3.novoEvento(
++							"Evento 2",
++							"Descricao 2",
++							new Date(), Tema.todos(), localPadrao.getId(), false);
++					
++					assertThat(usuario2.getEventosAdministrados().size(), is(0));
++					assertThat(usuario2.getEventosQueVaiParticipar().size(), is(1));
++					
++					assertThat(usuario3.getEventosAdministrados().size(), is(1));
++					assertThat(usuario3.getEventosQueVaiParticipar().size(), is(0));
++
++					try {
++						usuario3.participar(1L);
+ 						fail();
++					} catch(Exception e){
++						assertThat(e.getMessage(), is(Strings.EVENTO_COM_CAPACIDADE_MAXIMA_EXCEPTION));
+ 					}
++					
++					usuario1.novoEvento(
++							"Evento 3",
++							"Descricao 3",
++							new Date(), Tema.todos(), localPadrao.getId(), false);
+ 
+-					assertThat(Usuario.buscar(1L).getEventos().size(), is(1));
++					usuario3.participar(2L);
++					
++					assertThat(usuario2.getEventosAdministrados().size(), is(0));
++					assertThat(usuario2.getEventosQueVaiParticipar().size(), is(1));
++					
++					assertThat(usuario3.getEventosAdministrados().size(), is(1));
++					assertThat(usuario3.getEventosQueVaiParticipar().size(), is(1));
+ 					
+ 					try {
+-						usuario.novoEvento(
+-								"Aprendendo play",
+-								"Venha aprender play conosco",
+-								new Date(), Tema.todos());
++						usuario3.participar(1L);
++						fail();
++					} catch(Exception e){
++						assertThat(e.getMessage(), is(Strings.EVENTO_COM_CAPACIDADE_MAXIMA_EXCEPTION));
++					}
++
++					usuario1.novoEvento(
++							"Evento 4",
++							"Descricao 4",
++							new Date(), Tema.todos(), localPadrao.getId(), false);
++
++					usuario3.participar(3L);
++
++					assertThat(usuario2.getEventosAdministrados().size(), is(0));
++					assertThat(usuario2.getEventosQueVaiParticipar().size(), is(1));
++					
++					assertThat(usuario3.getEventosAdministrados().size(), is(1));
++					assertThat(usuario3.getEventosQueVaiParticipar().size(), is(2));
++
++					try {
++						usuario3.participar(1L);
+ 					} catch(Exception e){
+ 						fail();
+ 					}
++
++					assertThat(usuario2.getEventosAdministrados().size(), is(0));
++					assertThat(usuario2.getEventosQueVaiParticipar().size(), is(0));
++					
++					assertThat(usuario3.getEventosAdministrados().size(), is(1));
++					assertThat(usuario3.getEventosQueVaiParticipar().size(), is(3));
++				} catch (Exception e) {
++					fail();
++				}
++			}
++		});
++	}
++
++	@Test
++	public void deveListarEventosParticipandoEAdministrados() {
++		JPA.withTransaction(new play.libs.F.Callback0() {
++			public void invoke() {
++				try {
++					usuario1.salvar();
++
++					assertThat(usuario1.getEventosAdministrados().size(), is(0));
++					
++					usuario1.novoEvento(
++							"Evento 1",
++							"Descricao 1",
++							new Date(), Tema.todos(), localPadrao.getId(), false);
++
++					assertThat(usuario1.getEventosAdministrados().size(), is(1));
++
++					usuario1.novoEvento(
++							"Evento 2",
++							"Descricao 2",
++							new Date(), Tema.todos(), localPadrao.getId(), false);
++
++					assertThat(usuario1.getEventosAdministrados().size(), is(2));
++
++					usuario2.salvar();
++					
++					assertThat(usuario2.getEventosAdministrados().size(), is(0));
++					
++					usuario2.novoEvento(
++							"Evento 3",
++							"Descricao 3",
++							new Date(), Tema.todos(), localPadrao.getId(), false);
++
++					assertThat(usuario1.getEventosAdministrados().size(), is(2));
++					assertThat(usuario2.getEventosAdministrados().size(), is(1));
++
++					assertThat(usuario1.getEventosQueVaiParticipar().size(), is(0));
++					assertThat(usuario2.getEventosQueVaiParticipar().size(), is(0));
++
++					usuario1.participar(usuario2.getEventosAdministrados().get(0).getId());
++					
++					try {
++						usuario1.participar(8L);
++					} catch (Exception e){
++						assertThat(e.getMessage(), is(Strings.EVENTO_INEXISTENTE_EXCEPTION));
++					}
+ 					
+-					assertThat(Usuario.buscar(1L).getEventos().size(), is(2));
++					assertThat(usuario1.getEventosQueVaiParticipar().size(), is(1));
++					
++					try{
++						usuario1.participar(usuario1.getEventosAdministrados().get(0).getId());
++					} catch (Exception e){
++						assertThat(e.getMessage(), is(Strings.EVENTO_EH_ADMINSTRADOR_EXCEPTION));
++					}
+ 				} catch (Exception e) {
+ 					fail();
+ 				}

@@ -1,0 +1,24 @@
+<div class="swiper-container">
+	<div class="swiper-wrapper">
+		<div class="swiper-slide" style="background-color: rgb(13, 42, 70);">
+			@geral.apresentacao() 
+			@login()
+			@registro()
+		</div>
+	</div>
+	<div class="pagination"></div>
+</div>
+
+<script>
+	var mySwiper;
+
+	$(document).on('ready', function() {
+
+		mySwiper = new Swiper('.swiper-container', {
+			pagination : '.pagination',
+			loop : false,
+			grabCursor : true,
+			paginationClickable : true
+		})
+	});
+</script>

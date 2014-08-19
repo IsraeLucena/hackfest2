@@ -1,0 +1,3 @@
+@for(tema <- models.evento.Tema.todos()){
+	<a href="#" class="list-group-item" data-id="@tema.getId()">@tema</a>
+}
